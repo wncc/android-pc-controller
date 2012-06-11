@@ -1,0 +1,9 @@
+To Start a connection , Make sure your pc is the only device paired to your phone.
+
+Compile and run rfcomm-server.c
+
+next open the app (blumouse) in your phone
+
+(As of now , the app continuously transmits and the server continuously reads the data transmitted)
+
+The final app (Along with mouse control and latout) will be uploaded shortly...
