@@ -1,14 +1,15 @@
 package my.app.blumouse;
 
-import java.io.IOException;
 import java.util.Set;
-import java.util.UUID;
+import my.app.blumouse.R;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 import android.bluetooth.*;
 
 
@@ -62,7 +63,12 @@ public class BlumouseActivity extends Activity {
 			
 		}
 		
-		ConnectThread socket_operation = new ConnectThread(extcomputer);
+		TextView tv = (TextView)findViewById(R.id.touch_view);
+		Button b1 = (Button)findViewById(R.id.leftbutton);
+		Button b2 = (Button)findViewById(R.id.rightbutton);
+		
+		
+		ConnectThread socket_operation = new ConnectThread(extcomputer,tv,b1,b2);
 		
 		socket_operation.start();
 		
@@ -72,9 +78,9 @@ public class BlumouseActivity extends Activity {
 		
 	}
 	
-	/*public static void GiveConnectedSocket(BluetoothSocket sock){
-		ConnectedSocket = sock;
-	}*/
+	
+	
+	
 
 
 

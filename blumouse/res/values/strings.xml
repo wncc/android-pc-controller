@@ -3,5 +3,8 @@
 
     <string name="hello">Hello World, BlumouseActivity!</string>
     <string name="app_name">Blumouse</string>
+    <string name="left_mouse">left click</string>
+    <string name="right_mouse">right click</string>
+    <string name="temp">Here comes something to take the input.Might be a canvas</string>
 
 </resources>

@@ -9,19 +9,28 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 class ConnectThread extends Thread{
 	private final UUID MY_UUID = UUID.fromString("94f39d29-7d6d-437d-973b-fba39e49d4ee");
 	private final BluetoothSocket mmSocket;
 	private final BluetoothDevice mmDevice;
+	final TextView touchview;
+	final Button left_button;
+	final Button right_button;
 
-	public ConnectThread(BluetoothDevice device) {
+	public ConnectThread(BluetoothDevice device,TextView tv,Button b1 , Button b2) {
 		// Use a temporary object that is later assigned to mmSocket,
 		// because mmSocket is final
 		
 		BluetoothSocket tmp = null;
 		mmDevice = device;
+		touchview = tv;
+		left_button = b1;
+		right_button = b2;
+		
 
 		// Get a BluetoothSocket to connect with the given BluetoothDevice
 		/*try {
@@ -92,7 +101,7 @@ class ConnectThread extends Thread{
 		
 		
 		ConnectedThread thr1 = new ConnectedThread(mmSocket);
-		MoveThread Comm = new MoveThread(thr1);
+		MoveThread Comm = new MoveThread(thr1,touchview,left_button,right_button);
 		Comm.start();
 		/*thr1.start();
 		byte[] bytearray = new byte[]{121,111,92,109,47};

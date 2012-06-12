@@ -1,9 +1,26 @@
-To Start a connection , Make sure your pc is the only device paired to your phone.
+1.To Start a connection , Make sure your pc is the "ONLY" device paired to your phone and bluetooth is turned on in your phone.
 
-Compile and run rfcomm-server.c
+2.Compile and run blumouse-server.c
 
-next open the app (blumouse) in your phone
+  (Before that you have to install the following packages :
+	1.libxtst & libxtst-dev 
+	2.libbluetooth & libbluetooth-dev )
 
-(As of now , the app continuously transmits and the server continuously reads the data transmitted)
+  Compile using the following command:
+	gcc -o blumouse-server blumouse-server.c -lbluetooth -L/usr/X11R6/lib -lX11 -lXtst
+	
+  Run from terminal using ./blumouse-server.
 
-The final app (Along with mouse control and layout) will be uploaded soon...
+3.Next install and open the app (blumouse) in your phone.(This step should be done only after blumouse-server is running in terminal.)
+
+4.Now after you run the app , you'll get two messages : 
+	Accepted connection from xx.xx.xx.xx.xx.xx
+	Connection Started :) 
+  If you get these two messages , that means your phone is ready to use as a mouse :)
+
+  Else, exit from the blumouse-server process, start in again. now relaunch the app in your phone.
+
+  If there is any problem , you can contact me at harshavardhankode@gmail.com.
+											
+
+Caution : be careful not to tilt phone (in phones which auto align to gravity) because then, the socket will be reset..
