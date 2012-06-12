@@ -24,3 +24,5 @@
 											
 
 Caution : be careful not to tilt phone (in phones which auto align to gravity) because then, the socket will be reset..
+
+**PS: You can change the sensitivity , and the resolution of your screen in the blumouse-server.c file (they are globals) **
