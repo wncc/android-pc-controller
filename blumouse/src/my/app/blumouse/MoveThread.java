@@ -32,21 +32,51 @@ public class MoveThread extends Thread{
 		left_button.setOnClickListener(new View.OnClickListener() {
             //@Override
             public void onClick(View v) {
+            	if(!(left_button.getText() == "clicked")){
             	byte[] temp = new byte[] {'l'};
             	//left_button.setText("clicked");
-            	Stream.write(temp);
+            	Stream.write(temp);}
             	
             }}); 
+		left_button.setOnLongClickListener( new View.OnLongClickListener() {
+			
+			@Override
+			public boolean onLongClick(View v) {
+				
+				byte[] temp = new byte[] {'L'};
+				if(left_button.getText() == "clicked"){
+            	left_button.setText("left click");}
+            	else{left_button.setText("clicked");}
+            	Stream.write(temp);
+            	return false;
+			}
+		}
+				);
 		
+				
 		right_button.setOnClickListener(new View.OnClickListener() {
             //@Override
             public void onClick(View v) {
+            	if(!(right_button.getText() == "clicked")){
             	byte[] temp = new byte[] {'r'};
             	//right_button.setText("clicked");
-            	Stream.write(temp);
+            	Stream.write(temp);}
             }}); 
 		
-		
+		right_button.setOnLongClickListener( new View.OnLongClickListener() {
+
+			@Override
+			public boolean onLongClick(View v) {
+
+				byte[] temp = new byte[] {'R'};
+				if(right_button.getText() == "clicked"){
+					right_button.setText("right click");}
+				else{right_button.setText("clicked");}
+				Stream.write(temp);
+				return false;
+			}
+		}
+				);
 		
 	}
 	

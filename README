@@ -20,8 +20,12 @@
 
   Else, exit from the blumouse-server process, start in again. now relaunch the app in your phone.
 
-  If there is any problem , you can contact me at harshavardhankode@gmail.com.
-											
+
+Instructions to use:
+	Use the black portion of the screen as a touch pad.
+	The two buttons below are left and right clicks.
+	If you press and hold any of the button it means that you are holding down the mousebutton . 
+	If you want to toggle the button's state ,then again press and hold it to bring back to normal
 
 Caution : be careful not to tilt phone (in phones which auto align to gravity) because then, the socket will be reset..
 

@@ -1,3 +1,8 @@
+/*...........................................................|
+|blumouse-server.c 											 |
+|created by harshavardhan kode on 06/06/2012				 |
+|...........................................................*/
+
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/socket.h>
@@ -13,6 +18,7 @@
 
 void movecursor(int x ,int y);
 void mouseClick(int button);
+void mouseChange(int button);
 void act( char* buf);
 
 Display *dpy;
@@ -21,6 +27,8 @@ Window root_window;
 int sensitivity = 2 , xres = 1366 , yres = 768;
 
 int cur_x = 0 ,cur_y = 0 ,temp_posx,temp_posy,mtemp_x,mtemp_y;
+int l_clicked = 0 ;
+int r_clicked = 0;
 
 int main(int argc, char **argv)
 {	
@@ -63,16 +71,24 @@ int main(int argc, char **argv)
 		//if(flag==1){
         printf("%s \n", buf);
 		//flag=2;}
-		if (buf[0] == 'l')
+	switch(buf[0]){
+		case 'l':
 		mouseClick(1);
-
-    	if (buf[0] == 'r')
+		break;
+    	case 'r':
 		mouseClick(3);
-
-		if (buf[0] == '(' )
+		break;
+		case '(': 
 		act(buf);
-    	}
-	else { ;
+		break;
+		case 'R':
+		mouseChange(3);
+		break;
+		case 'L':
+		mouseChange(1);
+		break;
+    	}}
+	else { 
 		}
 	
 	}
@@ -165,11 +181,31 @@ XWarpPointer(dpy, None, root_window, 0, 0, 0, 0, x, y);
 XFlush(dpy); // Flushes the output buffer, therefore updates the cursor's position. Thanks to Achernar.
 }
 
+void mouseChange(int button)
+{
+int temp;
+if(button == 3){
+r_clicked = 1 - r_clicked;
+temp= r_clicked;
+//XTestFakeButtonEvent(dpy, button, r_clicked, CurrentTime);
+}
+
+if(button == 1){
+l_clicked = 1 - l_clicked;
+temp= l_clicked;
+//XTestFakeButtonEvent(dpy, button, l_clicked, CurrentTime);
+}
+if(temp == 1){
+printf("button down!");
+XTestFakeButtonEvent(dpy, button, True, CurrentTime);}
+else
+XTestFakeButtonEvent(dpy, button, False, CurrentTime);
+
+XFlush(dpy);
+}
 
 void mouseClick(int button)
 {
-
-
 XTestFakeButtonEvent(dpy, button, True, CurrentTime);
 XTestFakeButtonEvent(dpy, button, False, CurrentTime);
 XFlush(dpy);
